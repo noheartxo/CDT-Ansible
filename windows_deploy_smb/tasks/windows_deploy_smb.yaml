@@ -13,6 +13,7 @@
     full: 
       - Administrators
       - Domain Admins
+    read: Everyone
 
 - name: Copy File to SMB Share
   ansible.builtin.copy: 
