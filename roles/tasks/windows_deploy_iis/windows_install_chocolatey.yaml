@@ -4,7 +4,7 @@
     name: chocolatey.server
     state: prsent
 
-- name: Remove Defualt Website
+- name: Remove Default Website
   win_iis_website:
     name: Default Web Site
     state: absent
