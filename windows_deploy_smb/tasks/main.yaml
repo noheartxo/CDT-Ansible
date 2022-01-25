@@ -1,0 +1,4 @@
+--- 
+- name: Create share on box
+  roles: 
+    - windows_deploy_smb

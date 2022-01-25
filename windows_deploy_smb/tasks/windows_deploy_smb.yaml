@@ -1,0 +1,20 @@
+---
+- name: Create folder for share
+  ansible.builtin.file:
+    path: C:\shares\placeholder
+    state: directory
+
+- name: Add SMB Share
+  ansible.windows.win_share:
+    name: PlaceHolder
+    description: Share for first competiton
+    list: yes
+    path: C:\shares\placeholder
+    full: 
+      - Administrators
+      - Domain Admins
+
+- name: Copy File to SMB Share
+  ansible.builtin.copy: 
+    src: files/scoring.txt
+    dest: C:/shares/placeholder/scoring.txt
