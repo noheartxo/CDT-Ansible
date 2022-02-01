@@ -12,7 +12,7 @@
 # - name: Set Administrator Password
 #   win_user:
 #     name: Administrator
-#     password: '{{ ansible_password }}'
+#     password: '{{ team_password }}'
 #     state: present
   # delegate_to: '{{ dc_address }}'
   #ignore_errors: True
@@ -26,7 +26,7 @@
   with_items:
     - DNS
   register: result
-  # delegate_to: '{{ dc_address }}'
+  delegate_to: '{{ dc_address }}'
 
 - name: Restart if Needed
   ansible.windows.win_reboot:
