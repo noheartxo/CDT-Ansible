@@ -1,8 +1,10 @@
 ---
-- hosts: reactor
+- name: Configure AD/DNS
+  hosts: reactor
   roles: 
-    - windows_deploy_dc
     - windows_deploy_dns
+    - windows_deploy_dc
+    
 
 # - hosts: navigation
 #   roles: 

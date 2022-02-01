@@ -7,3 +7,13 @@ ansible_become_user: Administrator
 ansible_become_password: 'cdt123!'
 ansible_user: Administrator
 ansible_password: 'cdt123!'
+
+## Windows
+# win_team_password: "{{ team_password }}"
+dc_domain_name: "among.us"
+domain_admin_user: "Administrator@{{ dc_domain_name }}"
+dc_hostname: "reactor"
+domain_netbios_name: "among"
+safe_mode_password: "{{ team_password }}"
+primary_dns_server: 127.0.0.1
+secondary_dns_server: 8.8.8.8

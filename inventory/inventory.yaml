@@ -3,12 +3,12 @@ all:
   children:
     reactor:
       vars:
-        ansible_host: 192.168.61.129
+        ansible_host: 192.168.1.6
       hosts: reactor
 
-  windows:
-    children:
-      reactor:
+    windows:
+      children:
+        reactor:
 
     # navigation:
     #   ansible_host: "192.168.10.4"
