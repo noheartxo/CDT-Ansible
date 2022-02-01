@@ -12,7 +12,7 @@
 - name: Set Administrator Password
   win_user:
     name: Administrator
-    password: '{{ team_password }}'
+    password: '{{ ansible_password }}'
     state: present
   # delegate_to: '{{ dc_address }}'
   #ignore_errors: True
