@@ -1,8 +1,9 @@
 ---
 # ansible variables
-ansible_connection: psrp
-ansible_psrp_cert_validation: ignore
-ansible_psrp_protocol: https
-ansible_psrp_auth: basic
-ansible_psrp_credssp_auth_mechanism: ntlm
+ansible_connection: winrm
+ansible_winrm_server_cert_validation: ignore
 become_method: runas
+ansible_become_user: Administrator
+ansible_become_password: 'cdt123!'
+ansible_user: Administrator
+ansible_password: 'cdt123!'

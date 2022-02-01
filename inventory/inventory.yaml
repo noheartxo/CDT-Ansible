@@ -1,12 +1,14 @@
 ---
 all:
-  hosts:
+  children:
     reactor:
       vars:
         ansible_host: 192.168.61.129
-        ansible_port: 5986
-        ansible_connection: winrm
-        ansible_winrm_server_cert_validation: ignore
+      hosts: reactor
+
+  windows:
+    children:
+      reactor:
 
     # navigation:
     #   ansible_host: "192.168.10.4"
