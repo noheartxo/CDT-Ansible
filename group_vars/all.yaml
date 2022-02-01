@@ -1,0 +1,17 @@
+whiteteam_user: whiteteam
+whiteteam_password: Changeme123!
+
+ansible_user: "{{ whiteteam_user }}"
+ansible_password: "{{ whiteteam_password }}"
+
+team_password: Changeme123!
+
+## Windows
+# win_team_password: "{{ team_password }}"
+domain_admin_user: "Administrator@{{ dc_domain_name }}"
+dc_hostname: "placeholder"
+dc_domain_name: "among.us"
+domain_netbios_name: "among"
+safe_mode_password: "{{ team_password }}"
+primary_dns_server: 127.0.0.1
+secondary_dns_server: 8.8.8.8

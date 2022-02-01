@@ -1,0 +1,33 @@
+---
+- name: Change the hostname
+  win_hostname:
+    name: '{{ dc_hostname }}'
+  register: res
+
+- name: Restart if Needed
+  ansible.windows.win_reboot:
+  when: res.reboot_required
+
+ # Part of DC prereq - setting administrator password
+- name: Set Administrator Password
+  win_user:
+    name: Administrator
+    password: '{{ team_password }}'
+    state: present
+  delegate_to: '{{ dc_address }}'
+  #ignore_errors: True
+
+- name: Install Active Directory
+  ansible.windows.win_feature: 
+    name: AD-Domain-Services
+    include_management_tools: yes
+    include_sub_features: yes
+    state: present
+  with_items:
+    - DNS
+  register: result
+  delegate_to: '{{ dc_address }}'
+
+- name: Restart if Needed
+  ansible.windows.win_reboot:
+  when: result.reboot_required

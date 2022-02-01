@@ -1,0 +1,31 @@
+---
+  # Creating a domain, and then rebooting
+  - name: Create Domain
+    ansible.windows.win_domain: 
+      dns_domain_name: '{{ dc_domain_name }}'
+      domain_netbios_name: '{{ domain_netbios_name }}'
+      safe_mode_password: '{{ safe_mode_password }}'
+    register: domain_creation
+    # delegate_to: '{{ dc_address }}'
+
+- name: Restart if Needed
+  ansible.windows.win_reboot:
+  when: domain_creation.reboot_required
+
+- name: Promote DC
+  ansible.windows.win_domain_controller: 
+    dns_domain_name: '{{ dc_domain_name }}'
+    domain_admin_user: "{{ domain_admin_user }}"
+    domain_admin_password: "{{ team_password }}"
+    safe_mode_password: "{{ safe_mode_password }}"
+    state: domain_controller
+  register: dc_promo_result
+
+- name: Restart if Needed
+  ansible.windows.win_reboot:
+  when: dc_promo_result.reboot_required
+
+- name: Set WinRM
+  ansible.windows.win_service: 
+    name: WinRM
+    start_mode: auto

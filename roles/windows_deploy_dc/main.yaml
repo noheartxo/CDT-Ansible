@@ -1,0 +1,6 @@
+---
+- name: Complete DC Promotion Prereqs
+  ansible.builtin.include_tasks: dc_prereqs.yaml
+
+- name: Promote to DC 
+  ansible.builtin.include_tasks: dc_promo.yaml

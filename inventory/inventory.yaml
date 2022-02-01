@@ -1,0 +1,9 @@
+---
+windows:
+  children:
+    reactor:
+      ansible_host: "192.168.10.5"
+    navigation:
+      ansible_host: "192.168.10.4"
+    shield: 
+      ansible_host: "192.168.10.6"

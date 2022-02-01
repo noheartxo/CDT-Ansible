@@ -1,0 +1,8 @@
+---
+# ansible variables
+ansible_connection: psrp
+ansible_psrp_cert_validation: ignore
+ansible_psrp_protocol: https
+ansible_psrp_auth: basic
+ansible_psrp_credssp_auth_mechanism: ntlm
+become_method: runas

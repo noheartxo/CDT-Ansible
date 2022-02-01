@@ -1,0 +1,14 @@
+---
+- hosts: reactor
+  roles: 
+    - windows_deploy_dc
+    - windows_deploy_dns
+
+- hosts: navigation
+  roles: 
+    - windows_deploy_rdp
+
+- hosts: shields
+  roles: 
+    - windows_deploy_smb
+    - windows_configure_icmp

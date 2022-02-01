@@ -1,4 +1,3 @@
 --- 
 - name: Create share on box
-  roles: 
-    - windows_deploy_smb
+  ansible.builtin.include_tasks: windows_deploy_smb.yaml
