@@ -19,3 +19,7 @@ domain_netbios_name: "among"
 safe_mode_password: "{{ team_password }}"
 primary_dns_server: 127.0.0.1
 secondary_dns_server: 8.8.8.8
+dc_ip: 192.168.[10:11].5
+
+## SMB
+smb_share_location: "C:\Amogus"

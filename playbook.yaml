@@ -4,6 +4,11 @@
   roles: 
     - windows_deploy_dns
     - windows_deploy_dc
+
+- name: Create SMB Share
+  hosts: shields
+  roles: 
+    - windows_deploy_smb
     
 
 # - hosts: navigation

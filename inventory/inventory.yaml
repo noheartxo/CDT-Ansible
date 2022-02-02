@@ -1,14 +1,21 @@
 ---
 all:
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
   children:
     reactor:
       vars:
         ansible_host: 192.168.1.6
       hosts: reactor
+    shields:
+      vars:
+        ansible_host: 192.168.1.6
+      hosts: shields
 
     windows:
       children:
         reactor:
+        shields:
 
     # navigation:
     #   ansible_host: "192.168.10.4"
