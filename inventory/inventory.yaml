@@ -1,16 +1,16 @@
----
-all:
-  children:
-    reactor:
-      vars:
-        ansible_host: 192.168.1.6
-      hosts: reactor
+[reactor]
+#10.1.1.10
+#10.1.2.10
+#192.168.0.59
+192.168.237.131
 
-    windows:
-      children:
-        reactor:
-
-    # navigation:
-    #   ansible_host: "192.168.10.4"
-    # shield: 
-    #   ansible_host: "192.168.10.6"
+[reactor:vars]
+ansible_connection=winrm
+ansible_become_method=runas
+ansible_become_user=Administrator
+ansible_become_password="cdt123!"
+ansible_user=Administrator
+ansible_password="cdt123!"
+ansible_connection=winrm
+ansible_winrm_server_cert_validation=ignore
+ansible_python_interpreter=c:\Python\python

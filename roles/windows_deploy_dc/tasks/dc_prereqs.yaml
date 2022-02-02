@@ -25,9 +25,8 @@
     state: present
   with_items:
     - DNS
-  register: result
-  delegate_to: '{{ dc_address }}'
+  register: ad_install
 
 - name: Restart if Needed
   ansible.windows.win_reboot:
-  when: result.reboot_required
+  when: ad_install.reboot_required

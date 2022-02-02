@@ -1,0 +1,10 @@
+---
+- name: Install Wireshark
+  chocolatey.chocolate.win_chocolatey:
+    name: wireshark
+    state: present
+
+- name: Copy npcap executable
+  ansible.builtin.copy: 
+  src: files\npcap-1.60.exe
+  dest: C:\npcap-1.60.exe
