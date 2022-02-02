@@ -15,8 +15,8 @@
 - name: Promote DC
   ansible.windows.win_domain_controller: 
     dns_domain_name: '{{ dc_domain_name }}'
-    domain_admin_user: "{{ domain_admin_user }}"
-    domain_admin_password: "{{ team_password }}"
+    domain_admin_user: "{{ domain_netbios_name }}\\Administrator"
+    domain_admin_password: "{{ ansible_password }}"
     safe_mode_password: "{{ safe_mode_password }}"
     state: domain_controller
   register: dc_promo_result

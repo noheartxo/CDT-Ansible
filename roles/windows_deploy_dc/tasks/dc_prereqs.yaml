@@ -14,7 +14,6 @@
 #     name: Administrator
 #     password: '{{ team_password }}'
 #     state: present
-  # delegate_to: '{{ dc_address }}'
   #ignore_errors: True
 
 - name: Install Active Directory
@@ -26,7 +25,11 @@
   with_items:
     - DNS
   register: result
-  delegate_to: '{{ dc_address }}'
+
+- name: Prevent WinRM Connections Until Installation is Finished
+  ansible.windows.win_service:
+    name: WinRM
+    start_mode: delayed
 
 - name: Restart if Needed
   ansible.windows.win_reboot:
