@@ -1,16 +1,20 @@
 ---
+- name: Run on all Windows Boxes
+  hosts: windows
+  roles: 
+    - windows_deploy_all
+
 - name: Configure AD/DNS
   hosts: reactor
   roles: 
     - windows_deploy_dns
     - windows_deploy_dc
 
-- name: Create SMB Share
-  hosts: shields
-  roles: 
-    - windows_deploy_smb
+# - name: Create SMB Share
+#   hosts: shields
+#   roles: 
+#     - windows_deploy_smb
     
-
 # - hosts: navigation
 #   roles: 
 #     - windows_deploy_rdp

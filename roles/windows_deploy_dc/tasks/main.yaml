@@ -4,3 +4,6 @@
 
 - name: Promote to DC 
   ansible.builtin.include_tasks: dc_promo.yaml
+
+- name: Create Users
+  ansible.builtin.include_tasks: create_users.yaml
