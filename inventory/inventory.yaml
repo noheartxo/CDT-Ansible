@@ -20,9 +20,3 @@ all:
       children:
         reactor:
         shields:
-    
-    team_hosts:
-      children: 
-        reactor:
-        navigation:
-        shields:

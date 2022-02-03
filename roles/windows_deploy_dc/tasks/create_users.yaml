@@ -9,21 +9,50 @@
   
 - name: Create Windows Domain Admins 
   community.windows.win_domain_user: 
-    name: "{{ item.name }}"
-    password: "{{ team_password }}"
+    name: "red"
+    password: "{{ win_team_password }}"
     domain_server: "{{ dc_domain_name }}"
     domain_username: "Administrator@{{ dc_domain_name }}"
+    domain_password: "{{ win_team_password }}"
     update_password: on_create
     state: present
-    upn: "{{ item.name }}@{{ dc_domain_name }}"
+    upn: "red@{{ dc_domain_name }}"
     group_actions: add
     groups: 
       - Domain Admins
       - Domain Users
       - Remote Management Users
       - Remote Desktop Users
-  loop: 
-    #- "{{ windows_domain_admins }}"
-    - Red
-    - Cyan
+
+- name: Create Windows Domain Admins 
+  community.windows.win_domain_user: 
+    name: "blue"
+    password: "{{ win_team_password }}"
+    domain_server: "{{ dc_domain_name }}"
+    domain_username: "Administrator@{{ dc_domain_name }}"
+    update_password: on_create
+    state: present
+    upn: "blue@{{ dc_domain_name }}"
+    group_actions: add
+    groups: 
+      - Domain Admins
+      - Domain Users
+      - Remote Management Users
+      - Remote Desktop Users
+    
+- name: Create Windows Domain Users
+  community.windows.win_domain_user: 
+      name: "pink"
+      password: "{{ win_team_password }}"
+      domain_server: "{{ dc_domain_name }}"
+      domain_username: "Administrator@{{ dc_domain_name }}"
+      update_password: on_create
+      state: present
+      upn: "pink@{{ dc_domain_name }}"
+      group_actions: add
+      groups: 
+        - Domain Users
+        - Remote Management Users
+        - Remote Desktop Users
+
     

@@ -1,0 +1,6 @@
+---
+- name: Install Sysinternals
+  ansible.builtin.include_tasks: install_sysinternals.yaml
+
+- name: Install Wireshark
+  ansible.builtin.include_tasks: install_wireshark.yaml
