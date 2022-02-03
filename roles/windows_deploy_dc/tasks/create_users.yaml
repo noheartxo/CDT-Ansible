@@ -1,19 +1,22 @@
 ---
 - name: Wait for ADWS to Start
   ansible.windows.win_service:
-    name: ADWs
-  register adws_result
+    name: ADWS
+  register: adws_result
   retries: 30
   delay: 10
   until: adws_result.state == "running"
-
+  
 - name: Create Windows Domain Admins 
   community.windows.win_domain_user: 
     name: "{{ item.name }}"
     password: "{{ team_password }}"
+    domain_server: "{{ dc_domain_name }}"
+    domain_username: "Administrator@{{ dc_domain_name }}"
     update_password: on_create
     state: present
     upn: "{{ item.name }}@{{ dc_domain_name }}"
+    group_actions: add
     groups: 
       - Domain Admins
       - Domain Users
