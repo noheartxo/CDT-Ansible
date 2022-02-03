@@ -7,6 +7,9 @@ all:
       vars:
         ansible_host: 192.168.1.6
       hosts: reactor
+    navigation:
+      vars:
+        ansible_host: 192.168.1.6
     shields:
       vars:
         ansible_host: 192.168.1.6
@@ -16,8 +19,9 @@ all:
       children:
         reactor:
         shields:
-
-    # navigation:
-    #   ansible_host: "192.168.10.4"
-    # shield: 
-    #   ansible_host: "192.168.10.6"
+    
+    team_hosts:
+      children: 
+        reactor:
+        navigation:
+        shields:
