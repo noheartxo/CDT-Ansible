@@ -1,0 +1,62 @@
+---
+- name: Ensure Remote Management Group Exists
+  ansible.windows.win_group:
+    name: "Remote Management Users"
+    state: present
+
+- name: Set fDenyTSConnections
+  ansible.windows.win_regedit:
+    path: HKLM:\System\CurrentControlSet\Control\Terminal Server
+    name: fDenyTSConnections
+    data: 0
+    type: dword
+    state: present
+
+- name: Set updateRDStatus
+  ansible.windows.win_regedit:
+    path: HKLM:\System\CurrentControlSet\Control\Terminal Server
+    name: updateRDStatus
+    data: 1
+    type: dword
+    state: present
+
+# Force user authentication (NLA)? 0 for off, 1 for on
+# - name: Set updateRDStatus
+#   ansible.windows.win_regedit:
+#     path: HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp
+#     name: UserAuthentication
+#     data: 1
+#     type: dword
+#     state: present
+
+- name: Create RDP (TCP) firewall rule
+  community.windows.win_firewall_rule:
+    name: RDP-tcp
+    protocol: tcp
+    localport: 3389
+    action: allow
+    direction: in
+    state: present
+    profiles:
+    - domain
+    - private
+    - public
+    localip: any
+    remoteip: any
+    enabled: yes
+
+- name: Create RDP (UDP) firewall rule
+  community.windows.win_firewall_rule:
+    name: RDP-udp
+    protocol: udp
+    localport: 3389
+    action: allow
+    direction: in
+    state: present
+    profiles:
+    - domain
+    - private
+    - public
+    localip: any
+    remoteip: any
+    enabled: yes

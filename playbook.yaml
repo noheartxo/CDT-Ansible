@@ -21,7 +21,6 @@
 #   roles: 
 #     - windows_deploy_rdp
 
-
 # - name: Create SMB Share
 #   hosts: shields
 #   roles: 
