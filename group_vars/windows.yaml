@@ -10,10 +10,10 @@ ansible_become_password: "admin123"
 win_team_password: "{{ team_password }}"
 domain_netbios_name: "among"
 dc_domain_name: "among.us"
-domain_admin_user: "Administrator@{{ dc_domain_name }}"
+domain_user: "Administrator@{{ dc_domain_name }}"
 dc_hostname: "reactor"
 
-safe_mode_password: "{{ team_password }}"
+safe_mode_password: "{{ win_team_password }}"
 primary_dns_server: 127.0.0.1
 secondary_dns_server: 8.8.8.8
 dc_ip: 192.168.[10:11].5

@@ -15,8 +15,22 @@ all:
       vars:
         ansible_host: 192.168.10.6
       hosts: shields
+    medbay:
+      vars:
+        ansible_host: 192.168.10.2
+      hosts: medbay 
+    electrical: 
+      vars: 
+        ansible_hosts: 192.168.10.3
+      hosts: electrical 
 
     windows:
       children:
         reactor:
+        navigation:
         shields:
+
+    linux: 
+      children:
+        medbay:
+        electrical:

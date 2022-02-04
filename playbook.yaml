@@ -1,8 +1,9 @@
 ---
-- name: Run on all Windows Boxes
-  hosts: windows
-  roles: 
-    - windows_deploy_all
+# icmp and rdp should go in this role 
+# - name: Run on all Windows Boxes
+#   hosts: windows
+#   roles: 
+#     - windows_deploy_all
 
 - name: Install Windows Tools 
   hosts: windows
@@ -15,16 +16,19 @@
 #     - windows_deploy_dns
 #     - windows_deploy_dc
 
-# - name: Create SMB Share
-#   hosts: shields
-#   roles: 
-#     - windows_deploy_smb
-    
+# technially this actually should go in all 
 # - hosts: navigation
 #   roles: 
 #     - windows_deploy_rdp
 
-# - hosts: shields
+
+# - name: Create SMB Share
+#   hosts: shields
 #   roles: 
-#     - windows_deploy_smb
-#     - windows_configure_icmp
+#     - windows_deploy_smb    
+
+# - name: Create FTP (Linux)
+#   hosts: medbay 
+#   roles: 
+#     - 
+

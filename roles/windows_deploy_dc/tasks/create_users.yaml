@@ -12,7 +12,7 @@
     name: "red"
     password: "{{ win_team_password }}"
     domain_server: "{{ dc_domain_name }}"
-    domain_username: "Administrator@{{ dc_domain_name }}"
+    domain_username: "{{ domain_user }}"
     domain_password: "{{ win_team_password }}"
     update_password: on_create
     state: present
@@ -29,7 +29,7 @@
     name: "blue"
     password: "{{ win_team_password }}"
     domain_server: "{{ dc_domain_name }}"
-    domain_username: "Administrator@{{ dc_domain_name }}"
+    domain_username: "{{ domain_user }}"
     update_password: on_create
     state: present
     upn: "blue@{{ dc_domain_name }}"
@@ -45,7 +45,7 @@
       name: "pink"
       password: "{{ win_team_password }}"
       domain_server: "{{ dc_domain_name }}"
-      domain_username: "Administrator@{{ dc_domain_name }}"
+      domain_username: "{{ domain_user }}"
       update_password: on_create
       state: present
       upn: "pink@{{ dc_domain_name }}"

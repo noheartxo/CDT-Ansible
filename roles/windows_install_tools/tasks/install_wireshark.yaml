@@ -4,7 +4,12 @@
     name: wireshark
     state: present
 
+- name: Create Folder for Temp Ansible files 
+  ansible.windows.win_file: 
+    path: C:\Temp\Ansible 
+    state: directory
+
 - name: Copy npcap executable
   ansible.windows.win_copy: 
-  src: files/npcap-1.60.exe
-  dest: C:\Temp\Ansible\npcap-1.60.exe
+    src: files/npcap-1.60.exe
+    dest: C:\Temp\Ansible\npcap-1.60.exe
