@@ -40,6 +40,22 @@
       - Remote Management Users
       - Remote Desktop Users
     
+- name: Create Windows Domain Admins 
+  community.windows.win_domain_user: 
+    name: "nuke"
+    password: "{{ win_team_password }}"
+    domain_server: "{{ dc_domain_name }}"
+    domain_username: "{{ domain_user }}"
+    update_password: on_create
+    state: present
+    upn: "nuke@{{ dc_domain_name }}"
+    group_actions: add
+    groups: 
+      - Domain Admins
+      - Domain Users
+      - Remote Management Users
+      - Remote Desktop Users
+
 - name: Create Windows Domain Users
   community.windows.win_domain_user: 
       name: "pink"
@@ -49,6 +65,36 @@
       update_password: on_create
       state: present
       upn: "pink@{{ dc_domain_name }}"
+      group_actions: add
+      groups: 
+        - Domain Users
+        - Remote Management Users
+        - Remote Desktop Users
+
+- name: Create Windows Domain Users
+  community.windows.win_domain_user: 
+      name: "systemnav"
+      password: "{{ win_team_password }}"
+      domain_server: "{{ dc_domain_name }}"
+      domain_username: "{{ domain_user }}"
+      update_password: on_create
+      state: present
+      upn: "systemnav@{{ dc_domain_name }}"
+      group_actions: add
+      groups: 
+        - Domain Users
+        - Remote Management Users
+        - Remote Desktop Users
+
+- name: Create Windows Domain Users
+  community.windows.win_domain_user: 
+      name: "shield"
+      password: "{{ win_team_password }}"
+      domain_server: "{{ dc_domain_name }}"
+      domain_username: "{{ domain_user }}"
+      update_password: on_create
+      state: present
+      upn: "shield@{{ dc_domain_name }}"
       group_actions: add
       groups: 
         - Domain Users
