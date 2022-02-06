@@ -20,6 +20,7 @@
         name: medsystem
         password: "{{ 'Changeme123!' | password_hash('sha512') }}"
         shell: /bin/bash
+        group: sudo
           #    - name: ufw rules
           #      community.general.ufw:
           #rule: "allow"
