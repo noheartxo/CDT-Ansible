@@ -27,8 +27,8 @@
   roles: 
     - windows_deploy_smb    
 
-# - name: Create FTP (Linux)
-#   hosts: medbay 
-#   roles: 
-#     - 
+ - name: Create FTP (Linux)
+   hosts: medbay
+   roles:
+     - linux_deploy_ftp
 
