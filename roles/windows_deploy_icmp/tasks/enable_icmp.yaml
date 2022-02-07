@@ -1,0 +1,11 @@
+---
+- name: Enable firewall rule to allow ICMPv4 echo (ping)
+  community.windows.win_firewall_rule:
+    name: Allow ICMPv4 to echo
+    enabled: yes
+    state: present
+    profiles: public
+    action: allow
+    direction: in
+    protocol: icmpv4
+    icmp_type_code: '8:*'

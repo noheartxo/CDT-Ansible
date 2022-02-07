@@ -5,6 +5,7 @@
   roles: 
     - windows_deploy_all
     - windows_deploy_rdp
+    - windows_deploy_icmp 
 
 - name: Install Windows Tools 
   hosts: windows
@@ -31,6 +32,11 @@
   hosts: medbay
   roles:
     - linux_deploy_ftp
+
+- name: Create HTTP (Linux)
+   hosts: electrical
+   roles:
+     - linux_deploy_http
 
 - name: Create Linux Users
   hosts: linux

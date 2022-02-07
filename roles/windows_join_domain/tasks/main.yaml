@@ -1,0 +1,3 @@
+---
+- name: Join Domain
+  ansible.builtin.include_tasks: windows_join_domain.yaml

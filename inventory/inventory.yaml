@@ -2,27 +2,33 @@
 all:
   vars:
     ansible_python_interpreter: /usr/bin/python3
+    team_ip_num: "PlaceHolder"
   children:
     reactor:
       vars:
-        ansible_host: 192.168.1.6
-      hosts: reactor
+        ansible_host: "192.168.{{ team_ip_num|int }}.6"
+      hosts: 
+        reactor.team[01:02].among.us:
     navigation:
       vars:
-        ansible_host: 192.168.10.4
-      hosts: navigation
+        ansible_host: "192.168.{{ team_ip_num|int }}.4"
+      hosts: 
+        navigation.team[01:02].among.us:
     shields:
       vars:
-        ansible_host: 192.168.10.6
-      hosts: shields
+        ansible_host: "192.168.{{ team_ip_num|int }}.6"
+      hosts: 
+        shields.team[01:02].among.us:
     medbay:
       vars:
-        ansible_host: 192.168.10.2
-      hosts: medbay 
+        ansible_host: "192.168.{{ team_ip_num|int }}.2"
+      hosts: 
+        medbay.team[01:02].among.us:
     electrical: 
       vars: 
-        ansible_hosts: 192.168.10.3
-      hosts: electrical 
+        ansible_hosts: "192.168.{{ team_ip_num|int }}.3"
+      hosts: 
+        electrical.team[01:02].among.us:
 
     windows:
       children:
