@@ -1,0 +1,3 @@
+---
+- name: Configure RDP
+  ansible.builtin.include_tasks: windows_deploy_rdp.yaml

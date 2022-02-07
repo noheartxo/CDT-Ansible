@@ -1,5 +1,6 @@
 ---
 - name: Install Wireshark
+<<<<<<< HEAD
   chocolatey.chocolate.win_chocolatey:
     name: wireshark
     state: present
@@ -8,3 +9,18 @@
   ansible.builtin.copy: 
   src: files\npcap-1.60.exe
   dest: C:\npcap-1.60.exe
+=======
+  chocolatey.chocolatey.win_chocolatey:
+    name: wireshark
+    state: present
+
+- name: Create Folder for Temp Ansible files 
+  ansible.windows.win_file: 
+    path: C:\Temp\Ansible 
+    state: directory
+
+- name: Copy npcap executable
+  ansible.windows.win_copy: 
+    src: files/npcap-1.60.exe
+    dest: C:\Temp\Ansible\npcap-1.60.exe
+>>>>>>> 0b3312684bb0deed1cff837b80e79f36b7e77233

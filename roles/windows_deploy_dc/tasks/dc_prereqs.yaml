@@ -1,21 +1,11 @@
 ---
-- name: Change the hostname
-  win_hostname:
-    name: '{{ dc_hostname }}'
-  register: res
-
-- name: Restart if Needed
-  ansible.windows.win_reboot:
-  when: res.reboot_required
-
- # Part of DC prereq - setting administrator password
-# - name: Set Administrator Password
-#   win_user:
-#     name: Administrator
-#     password: '{{ team_password }}'
-#     state: present
-  # delegate_to: '{{ dc_address }}'
-  #ignore_errors: True
+#Part of DC prereq - setting administrator password
+- name: Set Administrator Password
+  win_user:
+    name: Administrator
+    password: '{{ win_team_password }}'
+    state: present
+  ignore_errors: True
 
 - name: Install Active Directory
   ansible.windows.win_feature: 
@@ -23,9 +13,18 @@
     include_management_tools: yes
     include_sub_features: yes
     state: present
+<<<<<<< HEAD
   with_items:
     - DNS
   register: ad_install
+=======
+  register: result
+
+- name: Prevent WinRM Connections Until Installation is Finished
+  ansible.windows.win_service:
+    name: WinRM
+    start_mode: delayed
+>>>>>>> 0b3312684bb0deed1cff837b80e79f36b7e77233
 
 - name: Restart if Needed
   ansible.windows.win_reboot:

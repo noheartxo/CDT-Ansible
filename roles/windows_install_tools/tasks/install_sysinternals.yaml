@@ -1,0 +1,7 @@
+---
+- name: Install Sysinternals
+  chocolatey.chocolatey.win_chocolatey:
+    name: sysinternals
+    version: '2022.1.27'
+    #params: /InstallDir:C:\Users\red\Desktop
+    state: present

@@ -1,21 +1,24 @@
 ---
 - name: Create folder for share
-  ansible.builtin.file:
-    path: C:\placeholder
+  ansible.windows.win_file:
+    path: C:\
     state: directory
 
 - name: Add SMB Share
   ansible.windows.win_share:
-    name: PlaceHolder
+    name: Amogus
     description: Share for first competiton
     list: yes
-    path: C:\placeholder
-    full: 
-      - Administrators
-      - Domain Admins
+    path: C:\
+    full: Administrators
     read: Everyone
 
 - name: Copy File to SMB Share
-  ansible.builtin.copy: 
+  ansible.windows.win_copy:
     src: files/scoring.txt
-    dest: C:\shares\placeholder\scoring.txt
+    dest: C:\Amogus\scoring.txt
+
+- name: Copy Meme to SMB Share
+  ansible.windows.win_copy:
+    src: files/Among-Us-memes.jpg
+    dest: C:\Amogus\meme.jpg

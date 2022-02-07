@@ -1,15 +1,44 @@
 ---
+# icmp and rdp should go in this role 
+- name: Run on all Windows Boxes
+  hosts: windows
+  roles: 
+    - windows_deploy_all
+    - windows_deploy_rdp
+    - windows_deploy_icmp 
+
+- name: Install Windows Tools 
+  hosts: windows
+  roles: 
+    - windows_install_tools
+
 - name: Configure AD/DNS
   hosts: reactor
   roles: 
     - windows_deploy_dns
     - windows_deploy_dc
-    
 
-# - hosts: navigation
-#   roles: 
-#     - windows_deploy_rdp
+- name: Join Windows boxes to Domain 
+  hosts: windows:!reactor
+  roles: 
+    - windows_join_domain
 
+- name: Create SMB Share
+  hosts: shields
+  roles: 
+    - windows_deploy_smb    
+
+- name: Create FTP (Linux)
+  hosts: medbay
+  roles:
+    - linux_deploy_ftp
+
+- name: Create HTTP (Linux)
+   hosts: electrical
+   roles:
+     - linux_deploy_http
+
+<<<<<<< HEAD
 # - hosts: shields
 #   roles: 
 #     - windows_deploy_smb
@@ -20,3 +49,9 @@
    hosts: electrical
    roles:
      - linux_deploy_http
+=======
+- name: Create Linux Users
+  hosts: linux
+  roles:
+    - linux_create_users
+>>>>>>> 0b3312684bb0deed1cff837b80e79f36b7e77233

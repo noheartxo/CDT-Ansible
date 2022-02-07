@@ -1,0 +1,51 @@
+---
+- name: Wait for ADWS to Start
+  ansible.windows.win_service:
+    name: ADWS
+  register: adws_result
+  retries: 30
+  delay: 10
+  until: adws_result.state == "running"
+  
+- name: Create Windows Domain Admins 
+  community.windows.win_domain_user: 
+    name: " {{ item }}"
+    password: "{{ win_team_password }}"
+    domain_server: "{{ dc_domain_name }}"
+    domain_username: "Administrator@{{ dc_domain_name }}"
+    domain_password: "{{ win_team_password }}"
+    update_password: on_create
+    state: present
+    upn: "{{ item }}@{{ dc_domain_name }}"
+    group_actions: add
+    groups: 
+      - Domain Admins
+      - Domain Users
+      - Remote Management Users
+      - Remote Desktop Users
+  loop:
+    - red 
+    - blue 
+    - nuke 
+
+- name: Create Windows Domain Users
+  community.windows.win_domain_user: 
+    name: "{{ item }}"
+    password: "{{ win_team_password }}"
+    domain_server: "{{ dc_domain_name }}"
+    domain_username: "{{ domain_user }}"
+    domain_password: "{{ win_team_password }}"
+    update_password: on_create
+    state: present
+    upn: "{{ item }}@{{ dc_domain_name }}"
+    group_actions: add
+    groups: 
+      - Domain Users
+      - Remote Management Users
+      - Remote Desktop Users
+  loop:
+    - pink 
+    - systemnav 
+    - shield 
+
+    

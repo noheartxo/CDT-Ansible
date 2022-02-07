@@ -1,5 +1,5 @@
-whiteteam_user: whiteteam
-whiteteam_password: Changeme123!
+whiteteam_user: GrayTeam
+whiteteam_password: admin123!
 
 ansible_user: "{{ whiteteam_user }}"
 ansible_password: "{{ whiteteam_password }}"
