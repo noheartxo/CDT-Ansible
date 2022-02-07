@@ -37,21 +37,3 @@
    hosts: electrical
    roles:
      - linux_deploy_http
-
-<<<<<<< HEAD
-# - hosts: shields
-#   roles: 
-#     - windows_deploy_smb
-#     - windows_configure_icmp
-
-
- - name: Create HTTP (Linux)
-   hosts: electrical
-   roles:
-     - linux_deploy_http
-=======
-- name: Create Linux Users
-  hosts: linux
-  roles:
-    - linux_create_users
->>>>>>> 0b3312684bb0deed1cff837b80e79f36b7e77233
