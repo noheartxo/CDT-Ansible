@@ -1,0 +1,3 @@
+---
+- name: Create HTTP server on Linux
+  ansible.builtin.include_tasks: linux_deploy_http.yaml
