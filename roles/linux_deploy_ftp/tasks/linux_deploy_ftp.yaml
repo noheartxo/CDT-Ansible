@@ -1,54 +1,54 @@
----
-  become: yes
-  tasks:
-    - name: install required tools
-      apt:
-        pkg:
-          - tcpdump
-          - lsof
-          - vim
-          - nano
-          - netcat
-          - gcc
-          - make
-          - curl
-          - vsftpd
-        update_cache: yes
-        state: latest
-    - name: create a user account
-      user:
-        name: medsystem
-        password: "{{ 'Changeme123!' | password_hash('sha512') }}"
-        shell: /bin/bash
-        group: sudo
-          #    - name: ufw rules
-          #      community.general.ufw:
-          #rule: "allow"
-          #port: "{{ item }}"
-          #proto: "tcp"
-          #with_items:
-          #- "20"
-          #- "21"
-          #- "22"
-          #- "64000:64321"
-          #- name: enable ufw
-          #community.general.ufw:
-          #state: "enabled"
-          #policy: "deny"
-    - name: copy vsftpd config
-      copy:
-        src: files/vsftpd.conf
-        dest: /etc/vsftpd.conf
-    - name: create ftp share
-      file:
-        path: /var/share/ftp
-        state: directory
-        mode: '0777'
-    - name: copy secrets
-      copy:
-        src: files/secrets
-        dest: /var/share/ftp/
-    - name: start vsftpd
-      service:
-        name: vsftpd
-        state: restarted
+- name: install required tools
+  apt:
+    pkg:
+      - tcpdump
+      - lsof
+      - vim
+      - nano
+      - netcat
+      - gcc
+      - make
+      - curl
+      - vsftpd
+    update_cache: yes
+    state: latest
+- name: create a user account
+  user:
+    name: medsystem
+    password: "{{ 'Changeme123!' | password_hash('sha512') }}"
+    shell: /bin/bash
+    group: sudo
+      #    - name: ufw rules
+      #      community.general.ufw:
+      #rule: "allow"
+      #port: "{{ item }}"
+      #proto: "tcp"
+      #with_items:
+      #- "20"
+      #- "21"
+      #- "22"
+      #- "64000:64321"
+      #- name: enable ufw
+      #community.general.ufw:
+      #state: "enabled"
+      #policy: "deny"
+- name: create insecure ftp account?
+  user:
+    name: ftp
+- name: copy vsftpd config
+  copy:
+    src: files/vsftpd.conf
+    dest: /etc/vsftpd.conf
+- name: create ftp share
+  file:
+    path: /var/share/ftp
+    state: directory
+    mode: '0777'
+- name: copy secrets
+  copy:
+    src: files/secrets
+    dest: /var/share/ftp/
+- name: start vsftpd
+  service:
+    name: vsftpd
+    state: restarted
