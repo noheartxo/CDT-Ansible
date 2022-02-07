@@ -5,7 +5,8 @@
   roles: 
     - windows_deploy_all
     - windows_deploy_rdp
-
+    - windows_deploy_icmp 
+    
 - name: Install Windows Tools 
   hosts: windows
   roles: 
