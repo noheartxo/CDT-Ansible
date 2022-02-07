@@ -1,0 +1,6 @@
+---
+- name: create users
+  ansible.builtin.include_tasks: linux_create_users.yaml
+  args:
+    apply:
+      become: yes

@@ -1,0 +1,6 @@
+---
+- name: Create ftp share on linux machine
+  ansible.builtin.include_tasks: linux_deploy_ftp.yaml
+  args:
+    apply:
+      become: yes
