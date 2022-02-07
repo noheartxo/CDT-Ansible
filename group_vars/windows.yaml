@@ -10,7 +10,7 @@ ansible_become_password: "admin123"
 win_team_password: "{{ team_password }}"
 domain_netbios_name: "team{{ team_number }}"
 dc_domain_name: "{{ inventory_hostname | replace(inventory_hostname_short, '') | replace('.', '', 1) }}"
-domain_user:  "{{ domain_netbios_name }}\\Administrator"
+domain_user:  "Administrator@{{ domain_netbios_name }}"
 
 safe_mode_password: "{{ win_team_password }}"
 primary_dns_server: 127.0.0.1
