@@ -33,6 +33,6 @@
     - linux_deploy_ftp
 
 - name: Create Linux Users
-  hosts: medbay,electrical
+  hosts: linux
   roles:
     - linux_create_users
