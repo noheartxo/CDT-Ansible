@@ -2,10 +2,11 @@
 all:
   vars:
     ansible_python_interpreter: /usr/bin/python3
+    team_ip_num: "PlaceHolder"
   children:
     reactor:
       vars:
-        ansible_host: 192.168.1.6
+        ansible_host: "192.168.{{ team_ip_num|int }}.6"
       hosts: 
         reactor.team[01:02].among.us:
     navigation:
