@@ -31,5 +31,10 @@
 # - name: Create FTP (Linux)
 #   hosts: medbay 
 #   roles: 
-#     - 
+#     - linux_deploy_ftp 
+
+# - name: Create HTTP (Linux)
+#    hosts: electrical
+#    roles:
+#      - linux_deploy_http
 
