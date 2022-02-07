@@ -6,23 +6,28 @@ all:
     reactor:
       vars:
         ansible_host: 192.168.1.6
-      hosts: reactor
+      hosts: 
+        reactor.team[01:02].among.us:
     navigation:
       vars:
         ansible_host: 192.168.10.4
-      hosts: navigation
+      hosts: 
+        navigation.team[01:02].among.us:
     shields:
       vars:
         ansible_host: 192.168.10.6
-      hosts: shields
+      hosts: 
+        shields.team[01:02].among.us:
     medbay:
       vars:
         ansible_host: 192.168.10.2
-      hosts: medbay 
+      hosts: 
+        medbay.team[01:02].among.us:
     electrical: 
       vars: 
         ansible_hosts: 192.168.10.3
-      hosts: electrical 
+      hosts: 
+        electrical.team[01:02].among.us:
 
     windows:
       children:

@@ -15,7 +15,7 @@
   ansible.windows.win_domain_controller: 
     dns_domain_name: '{{ dc_domain_name }}'
     domain_admin_user: "{{ domain_netbios_name }}\\Administrator"
-    domain_admin_password: "{{ ansible_password }}"
+    domain_admin_password: "{{ win_team_password }}"
     safe_mode_password: "{{ safe_mode_password }}"
     install_dns: yes
     state: domain_controller
