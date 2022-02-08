@@ -4,7 +4,7 @@ ansible_connection: winrm
 ansible_winrm_server_cert_validation: ignore
 become_method: runas
 ansible_become_user: "GrayTeam"
-ansible_become_password: "admin123"
+ansible_become_password: "admin123!"
 
 ## Windows
 win_team_password: "{{ team_password }}"

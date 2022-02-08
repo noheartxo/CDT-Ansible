@@ -12,6 +12,7 @@
       - vsftpd
     update_cache: yes
     state: latest
+
 - name: create a user account
   user:
     name: medsystem
@@ -35,19 +36,23 @@
 - name: create insecure ftp account?
   user:
     name: ftp
+
 - name: copy vsftpd config
   copy:
     src: files/vsftpd.conf
     dest: /etc/vsftpd.conf
+
 - name: create ftp share
   file:
     path: /var/share/ftp
     state: directory
     mode: '0777'
+
 - name: copy secrets
   copy:
     src: files/secrets
     dest: /var/share/ftp/
+    
 - name: start vsftpd
   service:
     name: vsftpd
