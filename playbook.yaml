@@ -34,6 +34,11 @@
     - linux_deploy_ftp
 
 - name: Create HTTP (Linux)
-   hosts: electrical
-   roles:
-     - linux_deploy_http
+  hosts: electrical
+  roles:
+    - linux_deploy_http
+
+- name: Create Linux Users
+  hosts: linux
+  roles:
+    - linux_create_users
