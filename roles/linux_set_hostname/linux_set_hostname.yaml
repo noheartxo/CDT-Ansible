@@ -1,0 +1,7 @@
+--- 
+- name: Change Hostname
+  ansible.build.hostname: 
+    name: "{{ inventory_hostname_short }}"
+  
+- name: Reboot Box 
+  ansible.builtin.reboot: 

@@ -1,0 +1,30 @@
+---
+- name: Create Local Admin Users
+  ansible.windows.win_user: 
+    name: "{{ item }}"
+    password: "{{ win_team_password }}"
+    state: present
+    update_password: always
+    groups: 
+      - Users
+      - Administrators
+      - Remote Management Users
+  loop:
+    - orange
+
+- name: Add Local Users
+  ansible.windows.win_user:
+    name: "{{ users }}"
+    password: "{{  win_team_password }}"
+    state: present
+    update_password: always 
+    groups: 
+      - Users
+      - Remote Management Users
+  loop: 
+    - green
+    - cyan
+    - vent 
+    - brown
+    - yellow
+    - lime

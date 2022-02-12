@@ -2,7 +2,8 @@
 - name: Join Domain
   ansible.windows.win_domain_membership:
     dns_domain_name: '{{ dc_domain_name }}'
-    domain_admin_user: '{{ domain_netbios_name }}\\Administrator'
+    hostname: '{{ inventory_hostname_short }}'
+    domain_admin_user: '{{ domain_user }}'
     domain_admin_password: '{{ win_team_password }}'
     state: domain
   register: domain_state

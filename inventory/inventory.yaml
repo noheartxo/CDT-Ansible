@@ -6,7 +6,7 @@ all:
   children:
     reactor:
       vars:
-        ansible_host: "192.168.{{ team_ip_num|int }}.6"
+        ansible_host: "192.168.{{ team_ip_num|int }}.5"
       hosts: 
         reactor.team[01:02].among.us:
     navigation:
@@ -26,7 +26,7 @@ all:
         medbay.team[01:02].among.us:
     electrical: 
       vars: 
-        ansible_hosts: "192.168.{{ team_ip_num|int }}.3"
+        ansible_host: "192.168.{{ team_ip_num|int }}.3"
       hosts: 
         electrical.team[01:02].among.us:
 
