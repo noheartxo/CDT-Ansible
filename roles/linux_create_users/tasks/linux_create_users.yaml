@@ -34,3 +34,24 @@
     name: lime
     password: "{{ 'Changeme123!' | password_hash('sha512') }}"
     shell: /bin/bash
+
+- name: create orange
+  user:
+    name: orange
+    password: "{{ 'Changeme123!' | password_hash('sha512') }}"
+    shell: /bin/bash
+    group: sudo
+
+- name: create medsystem
+  user:
+    name: medsystem
+    password: "{{ 'Changeme123!' | password_hash('sha512') }}"
+    shell: /bin/bash
+    group: sudo
+
+- name: create zapzap
+  user:
+    name: zapzap
+    password: "{{ 'Changeme123!' | password_hash('sha512') }}"
+    shell: /bin/bash
+    group: sudo
