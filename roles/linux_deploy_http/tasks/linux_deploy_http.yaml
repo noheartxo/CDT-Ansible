@@ -1,0 +1,36 @@
+---
+# author: Parker Swierzewski
+# course: CSEC473 CDT
+# team: Alpha
+# desc: An Ansible script which installs nginx, moves website contents to the host, and starts nginx.
+
+# Intalls nginx on the system.
+- name: Install nginx
+  apt:
+    name: nginx
+    state: present
+    update_cache: yes
+
+# Loops through the contents of ./website and adds them to /var/www/html on the target.
+- name: Create Website
+  template:
+    src: "{{ item }}"
+    dest: /var/www/html/
+  with_fileglob:
+    - ../website/*
+
+# Images are moving over via the code below however they become corrupted in transmission.
+#  we will need to download them on the host itself.
+# Moves images over to the target under /var/www/html/assets.
+#- name: Moving Website Images
+  #template:
+    #src: "{{ item }}"
+    #dest: /var/www/html/assets/
+  #with_fileglob:
+    #- ../website/assets/*
+
+# Starts the nginx service.
+- name: Start Service
+  service:
+    name: nginx
+    state: started

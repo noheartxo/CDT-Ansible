@@ -17,7 +17,7 @@
     update_password: on_create
     state: present
     upn: "{{ item }}@{{ dc_domain_name }}"
-    group_actions: add
+    groups_action: add
     groups: 
       - Domain Admins
       - Domain Users
@@ -38,7 +38,7 @@
     update_password: on_create
     state: present
     upn: "{{ item }}@{{ dc_domain_name }}"
-    group_actions: add
+    groups_action: add
     groups: 
       - Domain Users
       - Remote Management Users
@@ -47,5 +47,3 @@
     - pink 
     - systemnav 
     - shield 
-
-    

@@ -13,18 +13,12 @@
     include_management_tools: yes
     include_sub_features: yes
     state: present
-<<<<<<< HEAD
-  with_items:
-    - DNS
   register: ad_install
-=======
-  register: result
 
 - name: Prevent WinRM Connections Until Installation is Finished
   ansible.windows.win_service:
     name: WinRM
     start_mode: delayed
->>>>>>> 0b3312684bb0deed1cff837b80e79f36b7e77233
 
 - name: Restart if Needed
   ansible.windows.win_reboot:

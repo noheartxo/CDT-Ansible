@@ -23,10 +23,20 @@
   roles: 
     - windows_join_domain
 
+- name: Create Local Users
+  hosts: windows
+  roles: 
+    - windows_create_local_users
+
 - name: Create SMB Share
   hosts: shields
   roles: 
     - windows_deploy_smb    
+
+- name: Change Hostname (Linux)
+  hosts: linux
+  roles: 
+    - linux_set_hostname
 
 - name: Create FTP (Linux)
   hosts: medbay

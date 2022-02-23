@@ -21,12 +21,12 @@ all:
         shields.team[01:02].among.us:
     medbay:
       vars:
-        ansible_host: "192.168.{{ team_ip_num|int }}.2"
+        ansible_host: "192.168.{{ team_ip_num|int }}.3"
       hosts: 
         medbay.team[01:02].among.us:
     electrical: 
       vars: 
-        ansible_host: "192.168.{{ team_ip_num|int }}.3"
+        ansible_host: "192.168.{{ team_ip_num|int }}.2"
       hosts: 
         electrical.team[01:02].among.us:
 

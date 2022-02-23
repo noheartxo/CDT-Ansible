@@ -1,20 +1,12 @@
 ---
-<<<<<<< HEAD
-  # Creating a domain, and then rebooting
-=======
 # Creating a domain, and then rebooting
->>>>>>> 0b3312684bb0deed1cff837b80e79f36b7e77233
 - name: Create Domain
   ansible.windows.win_domain: 
     dns_domain_name: '{{ dc_domain_name }}'
     domain_netbios_name: '{{ domain_netbios_name }}'
     safe_mode_password: '{{ safe_mode_password }}'
   register: domain_creation
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> 0b3312684bb0deed1cff837b80e79f36b7e77233
 - name: Restart if Needed
   ansible.windows.win_reboot:
   when: domain_creation.reboot_required

@@ -3,6 +3,6 @@ plugin: constructed
 strict: yes
 
 groups:
-    #team01: "'team01' in inventory_hostname"
-    #team02: "'team02' in inventory_hostname"
-    teams: "'team01' in inventory_hostname"
+    team01: "'team01' in inventory_hostname"
+    team02: "'team02' in inventory_hostname"
+    #teams: "'team01' in inventory_hostname"

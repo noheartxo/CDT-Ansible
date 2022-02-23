@@ -5,6 +5,7 @@
     password: "{{ win_team_password }}"
     state: present
     update_password: always
+    groups_action: add
     groups: 
       - Users
       - Administrators
@@ -18,6 +19,7 @@
     password: "{{  win_team_password }}"
     state: present
     update_password: always 
+    groups_action: add
     groups: 
       - Users
       - Remote Management Users

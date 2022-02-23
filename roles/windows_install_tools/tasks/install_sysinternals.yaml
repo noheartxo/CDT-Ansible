@@ -3,5 +3,5 @@
   chocolatey.chocolatey.win_chocolatey:
     name: sysinternals
     version: '2022.1.27'
-    params: /InstallDir:C:\Users\Public\Desktop
+    params: /InstallDir:C:\Users\Public\Desktop\sysinternals
     state: present

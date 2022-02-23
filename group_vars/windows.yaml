@@ -15,4 +15,3 @@ domain_user:  "Administrator@{{ dc_domain_name }}"
 safe_mode_password: "{{ win_team_password }}"
 primary_dns_server: 127.0.0.1
 secondary_dns_server: 8.8.8.8
-dc_ip: "192.168.{{ team_ip_num|int }}.5"
